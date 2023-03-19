@@ -1,6 +1,5 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { useModel } from '@umijs/max';
-import { Card, theme } from 'antd';
+import { Card } from 'antd';
 import React from 'react';
 
 /**
@@ -14,21 +13,17 @@ const InfoCard: React.FC<{
   desc: string;
   href: string;
 }> = ({ title, href, index, desc }) => {
-  const { useToken } = theme;
-
-  const { token } = useToken();
-
   return (
     <div
       style={{
-        backgroundColor: token.colorBgContainer,
-        boxShadow: token.boxShadow,
+        backgroundColor: '#FFFFFF',
+        boxShadow: '0 2px 4px 0 rgba(35,49,128,0.02), 0 4px 8px 0 rgba(49,69,179,0.02)',
         borderRadius: '8px',
         fontSize: '14px',
-        color: token.colorTextSecondary,
-        lineHeight: '22px',
+        color: 'rgba(0,0,0,0.65)',
+        textAlign: 'justify',
+        lineHeight: ' 22px',
         padding: '16px 19px',
-        minWidth: '220px',
         flex: 1,
       }}
     >
@@ -58,7 +53,7 @@ const InfoCard: React.FC<{
         <div
           style={{
             fontSize: '16px',
-            color: token.colorText,
+            color: 'rgba(0, 0, 0, 0.85)',
             paddingBottom: 8,
           }}
         >
@@ -68,7 +63,7 @@ const InfoCard: React.FC<{
       <div
         style={{
           fontSize: '14px',
-          color: token.colorTextSecondary,
+          color: 'rgba(0,0,0,0.65)',
           textAlign: 'justify',
           lineHeight: '22px',
           marginBottom: 8,
@@ -84,8 +79,6 @@ const InfoCard: React.FC<{
 };
 
 const Welcome: React.FC = () => {
-  const { token } = theme.useToken();
-  const { initialState } = useModel('@@initialState');
   return (
     <PageContainer>
       <Card
@@ -94,9 +87,7 @@ const Welcome: React.FC = () => {
         }}
         bodyStyle={{
           backgroundImage:
-            initialState?.settings?.navTheme === 'realDark'
-              ? 'background-image: linear-gradient(75deg, #1A1B1F 0%, #191C1F 100%)'
-              : 'background-image: linear-gradient(75deg, #FBFDFF 0%, #F5F7FF 100%)',
+            'radial-gradient(circle at 97% 10%, #EBF2FF 0%, #F5F8FF 28%, #EBF1FF 124%)',
         }}
       >
         <div
@@ -111,7 +102,7 @@ const Welcome: React.FC = () => {
           <div
             style={{
               fontSize: '20px',
-              color: token.colorTextHeading,
+              color: '#1A1A1A',
             }}
           >
             欢迎使用 Ant Design Pro
@@ -119,7 +110,7 @@ const Welcome: React.FC = () => {
           <p
             style={{
               fontSize: '14px',
-              color: token.colorTextSecondary,
+              color: 'rgba(0,0,0,0.65)',
               lineHeight: '22px',
               marginTop: 16,
               marginBottom: 32,
@@ -132,7 +123,6 @@ const Welcome: React.FC = () => {
           <div
             style={{
               display: 'flex',
-              flexWrap: 'wrap',
               gap: 16,
             }}
           >
