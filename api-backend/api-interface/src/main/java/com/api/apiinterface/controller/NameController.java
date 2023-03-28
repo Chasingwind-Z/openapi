@@ -16,12 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/name")
 public class NameController {
 
-    @GetMapping("/")
-    public String getNameByGet(String name) {
+    @GetMapping("/get")
+    public String getNameByGet(String name, HttpServletRequest request) {
+        System.out.println(request.getHeader("yupi"));
         return "GET 你的名字是" + name;
     }
 
-    @PostMapping("/")
+    @PostMapping("/post")
     public String getNameByPost(@RequestParam String name) {
         return "POST 你的名字是" + name;
     }
@@ -34,7 +35,7 @@ public class NameController {
         String sign = request.getHeader("sign");
         String body = request.getHeader("body");
         // todo 实际情况应该是去数据库中查是否已分配给用户
-        if (!accessKey.equals("zhifei")) {
+        if (!accessKey.equals("yupi")) {
             throw new RuntimeException("无权限");
         }
         if (Long.parseLong(nonce) > 10000) {
@@ -49,6 +50,8 @@ public class NameController {
         if (!sign.equals(serverSign)) {
             throw new RuntimeException("无权限");
         }
-        return "POST 用户名字是" + user.getUsername();
+        // todo 调用次数 + 1 invokeCount
+        String result = "POST 用户名字是" + user.getUsername();
+        return result;
     }
 }
