@@ -5,6 +5,6 @@ export default function access(initialState: InitialState | undefined) {
   const { loginUser } = initialState ?? {};
   return {
     canUser: loginUser,
-    canAdmin: loginUser?.userRole === 'admin',
+    canAdmin: loginUser?.userRole === 'Admin',
   };
 }

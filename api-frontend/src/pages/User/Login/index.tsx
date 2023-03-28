@@ -19,7 +19,7 @@ import { Alert, message, Tabs } from 'antd';
 import React, { useState } from 'react';
 import { flushSync } from 'react-dom';
 import styles from './index.less';
-import { userLoginUsingPOST } from '@/services/yuapi-backend/userController';
+import { userLoginUsingPOST } from '@/services/api-backend/userController';
 
 const LoginMessage: React.FC<{
   content: string;
@@ -97,7 +97,7 @@ const Login: React.FC = () => {
           />
 
           {status === 'error' && loginType === 'account' && (
-            <LoginMessage content={'错误的用户名和密码(admin/ant.design)'} />
+            <LoginMessage content={'错误的用户名和密码(Admin/ant.design)'} />
           )}
           {type === 'account' && (
             <>
@@ -107,7 +107,7 @@ const Login: React.FC = () => {
                   size: 'large',
                   prefix: <UserOutlined className={styles.prefixIcon} />,
                 }}
-                placeholder={'用户名: admin or user'}
+                placeholder={'用户名: Admin or user'}
                 rules={[
                   {
                     required: true,
